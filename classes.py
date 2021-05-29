@@ -1,3 +1,6 @@
+import random
+
+
 class Animal:
     name = ""
     type = "animal"
@@ -11,7 +14,7 @@ class Animal:
         return self.name
 
     def what_am_i(self):
-        print(f"I am an {self.type} and my name is : {self.name}")
+        return f"I am an {self.type} and my name is : {self.name}"
 
     def i_have_legs(self):
         return self.has_legs
@@ -30,13 +33,21 @@ class Snake(Animal):
 
 def main():
     animals = [Cat("whiskey"), Cat("rose"), Snake("shh")]
-    whiskey, rose , snakey = animals
+    whiskey, rose, snake = animals
     print("Hello I am " + whiskey.get_name())
     print("Hello I am " + rose.get_name())
+    print("---------------------")
+    print(f"the index of snake is {animals.index(snake)}")
+    print("---------------------")
     for i in range(len(animals)):
         animal = animals[i]
-        animal.what_am_i()
-        print(f"do I have legs : {animal.i_have_legs()}")
+        has_legs = "do"
+        if not animal.i_have_legs():
+            has_legs += " not"
+        print(f'{animal.what_am_i()}, {has_legs} have legs')
+    print("---------------------")
+    for i in range(len(animals)):
+        random.choice(animals).what_am_i()
 
 
 if __name__ == '__main__':
